@@ -1,0 +1,18 @@
+2026-02-22 10:57:31,270 | INFO | sim_load | Loaded URDF: /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf
+2026-02-22 10:57:31,271 | INFO | sim_load | body_id=1 num_joints=11
+2026-02-22 10:57:31,271 | DEBUG | sim_load | Camera: dist=0.400 yaw=90.0 pitch=-15.0 target=(0.000, 0.000, 0.050)
+2026-02-22 10:57:31,271 | INFO | sim_load | Movable joints (11):
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=00 name=thumb_cmc_yaw        range=[+0.000, +1.360] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=01 name=thumb_cmc_pitch      range=[+0.000, +0.580] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=02 name=thumb_ip             range=[+0.000, +1.080] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=03 name=index_mcp_pitch      range=[+0.000, +1.600] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=04 name=index_dip            range=[+0.000, +1.430] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=05 name=middle_mcp_pitch     range=[+0.000, +1.600] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=06 name=middle_dip           range=[+0.000, +1.430] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=07 name=ring_mcp_pitch       range=[+0.000, +1.600] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=08 name=ring_dip             range=[+0.000, +1.430] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=09 name=pinky_mcp_pitch      range=[+0.000, +1.600] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | idx=10 name=pinky_dip            range=[+0.000, +1.430] maxF=100.000 maxV=1.000
+2026-02-22 10:57:31,271 | INFO | sim_load | Simulation loop running for 10.00 seconds
+2026-02-22 10:57:41,312 | INFO | sim_load | Simulation loop completed
+2026-02-22 10:57:41,330 | INFO | sim_load | PyBullet disconnected
