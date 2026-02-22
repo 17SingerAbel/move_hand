@@ -1,0 +1,3 @@
+PASS test1_100_commands iterations=100 movable_joints=11 max_first_joint_abs_err=0.000630
+PASS test2_invalid_length error="Expected 11 targets, got 10"
+

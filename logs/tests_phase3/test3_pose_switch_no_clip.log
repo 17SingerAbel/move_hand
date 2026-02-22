@@ -1,0 +1,15 @@
+2026-02-22 12:09:43,825 | INFO | joint_controller | JointController ready: gui=False hand_id=1 movable_joints=11
+2026-02-22 12:09:43,825 | INFO | demo_all_joints | Movable joints: 11
+2026-02-22 12:09:44,211 | INFO | demo_all_joints | Running sequence: open -> half_close -> close -> half_close -> open
+2026-02-22 12:09:44,215 | INFO | demo_all_joints | [CYCLE 01] pose=open first_joint target=+0.000 applied=+0.000 current=+0.000
+2026-02-22 12:09:44,217 | INFO | demo_all_joints | [CYCLE 01] pose=half_close first_joint target=+0.680 applied=+0.680 current=+0.626
+2026-02-22 12:09:44,219 | INFO | demo_all_joints | [CYCLE 01] pose=close first_joint target=+1.360 applied=+1.360 current=+1.301
+2026-02-22 12:09:44,221 | INFO | demo_all_joints | [CYCLE 01] pose=half_close first_joint target=+0.680 applied=+0.680 current=+0.730
+2026-02-22 12:09:44,223 | INFO | demo_all_joints | [CYCLE 01] pose=open first_joint target=+0.000 applied=+0.000 current=+0.058
+2026-02-22 12:09:44,225 | INFO | demo_all_joints | [CYCLE 02] pose=open first_joint target=+0.000 applied=+0.000 current=+0.005
+2026-02-22 12:09:44,226 | INFO | demo_all_joints | [CYCLE 02] pose=half_close first_joint target=+0.680 applied=+0.680 current=+0.626
+2026-02-22 12:09:44,228 | INFO | demo_all_joints | [CYCLE 02] pose=close first_joint target=+1.360 applied=+1.360 current=+1.301
+2026-02-22 12:09:44,230 | INFO | demo_all_joints | [CYCLE 02] pose=half_close first_joint target=+0.680 applied=+0.680 current=+0.730
+2026-02-22 12:09:44,232 | INFO | demo_all_joints | [CYCLE 02] pose=open first_joint target=+0.000 applied=+0.000 current=+0.058
+2026-02-22 12:09:44,232 | INFO | demo_all_joints | Whole-hand demo completed
+2026-02-22 12:09:44,250 | INFO | joint_controller | PyBullet disconnected

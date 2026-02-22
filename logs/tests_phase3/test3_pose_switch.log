@@ -1,0 +1,18 @@
+2026-02-22 11:32:39,762 | INFO | joint_controller | JointController ready: gui=False hand_id=1 movable_joints=11
+2026-02-22 11:32:39,763 | INFO | demo_all_joints | Movable joints: 11
+2026-02-22 11:32:39,946 | WARNING | demo_all_joints | Pose file is empty or placeholder. Using synthesized default poses.
+2026-02-22 11:32:39,946 | INFO | demo_all_joints | Running sequence: open -> half_close -> close -> half_close -> open
+2026-02-22 11:32:39,948 | INFO | demo_all_joints | [CYCLE 01] pose=open first_joint target=+0.000 applied=+0.000 current=+0.000
+2026-02-22 11:32:39,949 | INFO | demo_all_joints | [CYCLE 01] pose=half_close first_joint target=+0.350 applied=+0.350 current=+0.251
+2026-02-22 11:32:39,949 | WARNING | joint_controller | Command clipped: joint=thumb_cmc_pitch requested=0.7000 clipped=0.5800 range=[0.0000, 0.5800]
+2026-02-22 11:32:39,950 | INFO | demo_all_joints | [CYCLE 01] pose=close first_joint target=+0.700 applied=+0.700 current=+0.573
+2026-02-22 11:32:39,951 | INFO | demo_all_joints | [CYCLE 01] pose=half_close first_joint target=+0.350 applied=+0.350 current=+0.413
+2026-02-22 11:32:39,953 | INFO | demo_all_joints | [CYCLE 01] pose=open first_joint target=+0.000 applied=+0.000 current=+0.117
+2026-02-22 11:32:39,954 | INFO | demo_all_joints | [CYCLE 02] pose=open first_joint target=+0.000 applied=+0.000 current=+0.033
+2026-02-22 11:32:39,956 | INFO | demo_all_joints | [CYCLE 02] pose=half_close first_joint target=+0.350 applied=+0.350 current=+0.260
+2026-02-22 11:32:39,956 | WARNING | joint_controller | Command clipped: joint=thumb_cmc_pitch requested=0.7000 clipped=0.5800 range=[0.0000, 0.5800]
+2026-02-22 11:32:39,958 | INFO | demo_all_joints | [CYCLE 02] pose=close first_joint target=+0.700 applied=+0.700 current=+0.576
+2026-02-22 11:32:39,959 | INFO | demo_all_joints | [CYCLE 02] pose=half_close first_joint target=+0.350 applied=+0.350 current=+0.414
+2026-02-22 11:32:39,961 | INFO | demo_all_joints | [CYCLE 02] pose=open first_joint target=+0.000 applied=+0.000 current=+0.117
+2026-02-22 11:32:39,961 | INFO | demo_all_joints | Whole-hand demo completed
+2026-02-22 11:32:39,981 | INFO | joint_controller | PyBullet disconnected
