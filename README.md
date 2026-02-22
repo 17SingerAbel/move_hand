@@ -157,3 +157,27 @@ conda run -n linkhand python sim/demo_all_joints.py \
 说明：
 - `config/poses.yaml` 目前是占位空列表，脚本会自动生成默认姿态（open/half_close/close）。
 - 你后续可以把每个姿态改成“按关节的实际向量”，长度必须等于可动关节数。
+
+## 9) 中指手势 demo（客户指定）
+需求：中指保持伸直，其他手指最大弯曲。
+
+运行：
+```bash
+python sim/demo_middle_finger.py \
+  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --hold 3 \
+  --log-level DEBUG \
+  --log-file logs/demo_middle_finger.log
+```
+
+参数说明：
+- `--middle-ratio`：中指弯曲比例，默认 `0.0`（完全伸直）。
+- `--others-ratio`：其他关节弯曲比例，默认 `1.0`（最大弯曲）。
+
+可微调示例（中指稍微弯一点）：
+```bash
+python sim/demo_middle_finger.py \
+  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --middle-ratio 0.1 \
+  --others-ratio 1.0
+```

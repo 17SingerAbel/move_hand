@@ -25,3 +25,18 @@
 2026-02-22 11:05:18,576 | DEBUG | joint_controller | set_joint: list_idx=8 urdf_idx=8 name=ring_dip target=0.3500 applied=0.3500 force=2.000
 2026-02-22 11:05:18,576 | DEBUG | joint_controller | set_joint: list_idx=9 urdf_idx=9 name=pinky_mcp_pitch target=0.3500 applied=0.3500 force=2.000
 2026-02-22 11:05:18,576 | DEBUG | joint_controller | set_joint: list_idx=10 urdf_idx=10 name=pinky_dip target=0.3500 applied=0.3500 force=2.000
+2026-02-22 11:06:14,191 | INFO | joint_controller | JointController ready: gui=True hand_id=1 movable_joints=11
+2026-02-22 11:06:14,192 | INFO | demo_all_joints | Movable joints: 11
+2026-02-22 11:06:14,213 | WARNING | demo_all_joints | Pose file is empty or placeholder. Using synthesized default poses.
+2026-02-22 11:06:14,213 | INFO | demo_all_joints | Running sequence: open -> half_close -> close -> half_close -> open
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=0 urdf_idx=0 name=thumb_cmc_yaw target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=1 urdf_idx=1 name=thumb_cmc_pitch target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=2 urdf_idx=2 name=thumb_ip target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=3 urdf_idx=3 name=index_mcp_pitch target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=4 urdf_idx=4 name=index_dip target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=5 urdf_idx=5 name=middle_mcp_pitch target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=6 urdf_idx=6 name=middle_dip target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=7 urdf_idx=7 name=ring_mcp_pitch target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=8 urdf_idx=8 name=ring_dip target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=9 urdf_idx=9 name=pinky_mcp_pitch target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:06:14,298 | DEBUG | joint_controller | set_joint: list_idx=10 urdf_idx=10 name=pinky_dip target=0.0000 applied=0.0000 force=2.000

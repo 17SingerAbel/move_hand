@@ -1,0 +1,48 @@
+2026-02-22 11:08:37,575 | INFO | joint_controller | JointController ready: gui=True hand_id=1 movable_joints=11
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=thumb_cmc_yaw      role=other target=+1.360 range=[+0.000, +1.360]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=thumb_cmc_pitch    role=other target=+0.580 range=[+0.000, +0.580]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=thumb_ip           role=other target=+1.080 range=[+0.000, +1.080]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=index_mcp_pitch    role=other target=+1.600 range=[+0.000, +1.600]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=index_dip          role=other target=+1.430 range=[+0.000, +1.430]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=middle_mcp_pitch   role=middle target=+0.000 range=[+0.000, +1.600]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=middle_dip         role=middle target=+0.000 range=[+0.000, +1.430]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=ring_mcp_pitch     role=other target=+1.600 range=[+0.000, +1.600]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=ring_dip           role=other target=+1.430 range=[+0.000, +1.430]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=pinky_mcp_pitch    role=other target=+1.600 range=[+0.000, +1.600]
+2026-02-22 11:08:37,575 | INFO | demo_middle_finger | joint=pinky_dip          role=other target=+1.430 range=[+0.000, +1.430]
+2026-02-22 11:08:37,575 | DEBUG | joint_controller | set_joint: list_idx=0 urdf_idx=0 name=thumb_cmc_yaw target=1.3600 applied=1.3600 force=2.000
+2026-02-22 11:08:37,575 | DEBUG | joint_controller | set_joint: list_idx=1 urdf_idx=1 name=thumb_cmc_pitch target=0.5800 applied=0.5800 force=2.000
+2026-02-22 11:08:37,575 | DEBUG | joint_controller | set_joint: list_idx=2 urdf_idx=2 name=thumb_ip target=1.0800 applied=1.0800 force=2.000
+2026-02-22 11:08:37,575 | DEBUG | joint_controller | set_joint: list_idx=3 urdf_idx=3 name=index_mcp_pitch target=1.6000 applied=1.6000 force=2.000
+2026-02-22 11:08:37,575 | DEBUG | joint_controller | set_joint: list_idx=4 urdf_idx=4 name=index_dip target=1.4300 applied=1.4300 force=2.000
+2026-02-22 11:08:37,575 | DEBUG | joint_controller | set_joint: list_idx=5 urdf_idx=5 name=middle_mcp_pitch target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:08:37,575 | DEBUG | joint_controller | set_joint: list_idx=6 urdf_idx=6 name=middle_dip target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:08:37,576 | DEBUG | joint_controller | set_joint: list_idx=7 urdf_idx=7 name=ring_mcp_pitch target=1.6000 applied=1.6000 force=2.000
+2026-02-22 11:08:37,576 | DEBUG | joint_controller | set_joint: list_idx=8 urdf_idx=8 name=ring_dip target=1.4300 applied=1.4300 force=2.000
+2026-02-22 11:08:37,576 | DEBUG | joint_controller | set_joint: list_idx=9 urdf_idx=9 name=pinky_mcp_pitch target=1.6000 applied=1.6000 force=2.000
+2026-02-22 11:08:37,576 | DEBUG | joint_controller | set_joint: list_idx=10 urdf_idx=10 name=pinky_dip target=1.4300 applied=1.4300 force=2.000
+2026-02-22 11:08:44,269 | INFO | joint_controller | PyBullet disconnected
+2026-02-22 11:08:51,224 | INFO | joint_controller | JointController ready: gui=True hand_id=1 movable_joints=11
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=thumb_cmc_yaw      role=other target=+1.360 range=[+0.000, +1.360]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=thumb_cmc_pitch    role=other target=+0.580 range=[+0.000, +0.580]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=thumb_ip           role=other target=+1.080 range=[+0.000, +1.080]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=index_mcp_pitch    role=other target=+1.600 range=[+0.000, +1.600]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=index_dip          role=other target=+1.430 range=[+0.000, +1.430]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=middle_mcp_pitch   role=middle target=+0.000 range=[+0.000, +1.600]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=middle_dip         role=middle target=+0.000 range=[+0.000, +1.430]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=ring_mcp_pitch     role=other target=+1.600 range=[+0.000, +1.600]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=ring_dip           role=other target=+1.430 range=[+0.000, +1.430]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=pinky_mcp_pitch    role=other target=+1.600 range=[+0.000, +1.600]
+2026-02-22 11:08:51,224 | INFO | demo_middle_finger | joint=pinky_dip          role=other target=+1.430 range=[+0.000, +1.430]
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=0 urdf_idx=0 name=thumb_cmc_yaw target=1.3600 applied=1.3600 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=1 urdf_idx=1 name=thumb_cmc_pitch target=0.5800 applied=0.5800 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=2 urdf_idx=2 name=thumb_ip target=1.0800 applied=1.0800 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=3 urdf_idx=3 name=index_mcp_pitch target=1.6000 applied=1.6000 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=4 urdf_idx=4 name=index_dip target=1.4300 applied=1.4300 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=5 urdf_idx=5 name=middle_mcp_pitch target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=6 urdf_idx=6 name=middle_dip target=0.0000 applied=0.0000 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=7 urdf_idx=7 name=ring_mcp_pitch target=1.6000 applied=1.6000 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=8 urdf_idx=8 name=ring_dip target=1.4300 applied=1.4300 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=9 urdf_idx=9 name=pinky_mcp_pitch target=1.6000 applied=1.6000 force=2.000
+2026-02-22 11:08:51,225 | DEBUG | joint_controller | set_joint: list_idx=10 urdf_idx=10 name=pinky_dip target=1.4300 applied=1.4300 force=2.000
+2026-02-22 11:08:56,839 | INFO | joint_controller | PyBullet disconnected
