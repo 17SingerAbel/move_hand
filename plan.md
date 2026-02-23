@@ -1,5 +1,14 @@
 # Linker Hand 06 Lite 控制落地计划（macOS + 无实体手）
 
+## 当前进度（截至当前代码）
+- Phase 0: 已完成（关节接口和约束在 `sim/joint_controller.py` 与文档中落地）。
+- Phase 1: 已完成（`sim/sim_load.py` 可稳定加载并打印关节）。
+- Phase 2: 已完成（`sim/demo_single_joint.py` 可复现单关节闭环）。
+- Phase 3: 已完成（`sim/demo_all_joints.py` + `config/poses.yaml` + 回归验证）。
+- Phase 4: 已完成（`sim/demo_key_control.py`、`tools/cli_control.py`、`sim/test_middle_home_cycle.py`）。
+- Phase 5: 进行中（`ros2_ws/src/hand_bridge` 最小骨架已可在 Docker 中 build/run/topic 验证）。
+- Phase 6: 未开始（目标为 Windows 真机驱动替换与现场联调）。
+
 ## 总体原则
 - 当前目标不是复杂操作，而是“逐关节可控”。
 - 先在 macOS 用 PyBullet 跑通，再切到客户 Windows 实机。

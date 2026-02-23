@@ -1,63 +1,73 @@
 # ROS2 Minimal Bridge (`hand_bridge`)
 
-说明：
-- 最终交付运行平台是 Windows 原生。
-- 本目录下 Docker 仅用于 ROS2 联调测试。
+这个目录是 ROS2 适配骨架。最终客户运行平台是 Windows 原生；这里的 Docker 仅用于 ROS2 联调测试。
 
-## 1) 构建
-在已安装 ROS2 的终端执行：
+## 包与节点
+- 包：`ros2_ws/src/hand_bridge`
+- 节点：`sim_driver_node`
+- 输入 topic：`/hand/command` (`std_msgs/msg/Float64MultiArray`)
+- 输出 topic：`/hand/state` (`sensor_msgs/msg/JointState`)
 
+接口细节见：`../docs/ros2_interface.md`
+
+## A) 本机 ROS2（Linux/macOS）运行
+
+### 1) 构建
 ```bash
 cd ros2_ws
-colcon build
+source /opt/ros/humble/setup.bash
+colcon build --packages-select hand_bridge
 source install/setup.bash
 ```
 
-## 2) 启动仿真驱动节点
+### 2) 启动节点
+注意：`urdf` 参数建议给绝对路径，避免 cwd 差异导致找不到文件。
+
 ```bash
 ros2 run hand_bridge sim_driver_node \
   --ros-args \
-  -p urdf:=external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  -p urdf:=/ABS/PATH/TO/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
   -p headless:=true \
   -p publish_rate_hz:=50.0
 ```
 
-## 3) 发布命令（/hand/command）
-`/hand/command` 类型：`std_msgs/msg/Float64MultiArray`
-
+### 3) 发送命令
 ```bash
-ros2 topic pub /hand/command std_msgs/msg/Float64MultiArray \
+ros2 topic pub --once /hand/command std_msgs/msg/Float64MultiArray \
 "{data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}"
 ```
 
-## 4) 读取状态（/hand/state）
-`/hand/state` 类型：`sensor_msgs/msg/JointState`
-
+### 4) 查看状态
 ```bash
 ros2 topic echo /hand/state
 ```
 
-## 5) Docker 方式（仅 ROS2 测试）
+## B) Docker（仅联调测试）
+
+### 1) 构建镜像
 ```bash
 cd ros2_ws/docker
 docker compose build
-docker compose run --rm ros2-test
 ```
 
-容器内执行：
+### 2) 进入容器并构建包
 ```bash
-cd /ws/ros2_ws
-source /opt/ros/humble/setup.bash
-colcon build
-source install/setup.bash
-ros2 run hand_bridge sim_driver_node --ros-args -p urdf:=external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf -p headless:=true
+docker compose run --rm ros2-test bash -lc "
+  cd /ws/ros2_ws && \
+  source /opt/ros/humble/setup.bash && \
+  colcon build --packages-select hand_bridge
+"
 ```
 
-另开一个容器终端（或新 shell）测试 topic：
+### 3) 启动节点（容器内）
 ```bash
-cd /ws/ros2_ws
-source /opt/ros/humble/setup.bash
-source install/setup.bash
-ros2 topic pub /hand/command std_msgs/msg/Float64MultiArray "{data: [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]}"
-ros2 topic echo /hand/state
+docker compose run --rm ros2-test bash -lc "
+  cd /ws/ros2_ws && \
+  source /opt/ros/humble/setup.bash && \
+  source install/setup.bash && \
+  ros2 run hand_bridge sim_driver_node \
+    --ros-args \
+    -p urdf:=/ws/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+    -p headless:=true
+"
 ```
