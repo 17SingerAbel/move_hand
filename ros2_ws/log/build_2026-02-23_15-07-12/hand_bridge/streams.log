@@ -1,0 +1,37 @@
+[0.269s] Invoking command in '/ws/ros2_ws/src/hand_bridge': PYTHONPATH=/ws/ros2_ws/build/hand_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/hand_bridge build --build-base /ws/ros2_ws/build/hand_bridge/build install --record /ws/ros2_ws/build/hand_bridge/install.log --single-version-externally-managed install_data
+[0.362s] running egg_info
+[0.363s] creating ../../build/hand_bridge/hand_bridge.egg-info
+[0.364s] writing ../../build/hand_bridge/hand_bridge.egg-info/PKG-INFO
+[0.365s] writing dependency_links to ../../build/hand_bridge/hand_bridge.egg-info/dependency_links.txt
+[0.366s] writing entry points to ../../build/hand_bridge/hand_bridge.egg-info/entry_points.txt
+[0.366s] writing requirements to ../../build/hand_bridge/hand_bridge.egg-info/requires.txt
+[0.366s] writing top-level names to ../../build/hand_bridge/hand_bridge.egg-info/top_level.txt
+[0.367s] writing manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'
+[0.369s] reading manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'
+[0.370s] writing manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'
+[0.370s] running build
+[0.370s] running build_py
+[0.371s] creating /ws/ros2_ws/build/hand_bridge/build
+[0.371s] creating /ws/ros2_ws/build/hand_bridge/build/lib
+[0.372s] creating /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge
+[0.372s] copying hand_bridge/__init__.py -> /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge
+[0.373s] copying hand_bridge/sim_driver_node.py -> /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge
+[0.374s] running install
+[0.374s] running install_lib
+[0.375s] creating /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge
+[0.375s] copying /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge/__init__.py -> /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge
+[0.376s] copying /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge/sim_driver_node.py -> /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge
+[0.378s] byte-compiling /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge/__init__.py to __init__.cpython-310.pyc
+[0.379s] byte-compiling /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge/sim_driver_node.py to sim_driver_node.cpython-310.pyc
+[0.381s] running install_data
+[0.382s] creating /ws/ros2_ws/install/hand_bridge/share/ament_index
+[0.382s] creating /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index
+[0.382s] creating /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index/packages
+[0.383s] copying resource/hand_bridge -> /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index/packages
+[0.383s] copying package.xml -> /ws/ros2_ws/install/hand_bridge/share/hand_bridge
+[0.386s] running install_egg_info
+[0.386s] Copying ../../build/hand_bridge/hand_bridge.egg-info to /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge-0.0.1-py3.10.egg-info
+[0.393s] running install_scripts
+[0.405s] Installing sim_driver_node script to /ws/ros2_ws/install/hand_bridge/lib/hand_bridge
+[0.407s] writing list of installed files to '/ws/ros2_ws/build/hand_bridge/install.log'
+[0.424s] Invoked command in '/ws/ros2_ws/src/hand_bridge' returned '0': PYTHONPATH=/ws/ros2_ws/build/hand_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/hand_bridge build --build-base /ws/ros2_ws/build/hand_bridge/build install --record /ws/ros2_ws/build/hand_bridge/install.log --single-version-externally-managed install_data

@@ -1,0 +1,11 @@
+services:
+  ros2-test:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: move-hand-ros2-test
+    working_dir: /ws
+    volumes:
+      - ../..:/ws
+    tty: true
+    stdin_open: true

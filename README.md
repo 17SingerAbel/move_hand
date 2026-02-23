@@ -251,3 +251,7 @@ python tools/cli_control.py \
 
 快速使用说明见：
 - `ros2_ws/README.md`
+
+平台说明：
+- 最终运行请看 `docs/windows_runbook.md`（Windows 原生）。
+- Docker 仅用于 ROS2 测试联调。

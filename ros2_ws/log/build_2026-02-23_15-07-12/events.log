@@ -1,0 +1,46 @@
+[0.000000] (-) TimerEvent: {}
+[0.001010] (hand_bridge) JobQueued: {'identifier': 'hand_bridge', 'dependencies': OrderedDict()}
+[0.001163] (hand_bridge) JobStarted: {'identifier': 'hand_bridge'}
+[0.099859] (-) TimerEvent: {}
+[0.206068] (-) TimerEvent: {}
+[0.268489] (hand_bridge) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/hand_bridge', 'build', '--build-base', '/ws/ros2_ws/build/hand_bridge/build', 'install', '--record', '/ws/ros2_ws/build/hand_bridge/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/ws/ros2_ws/src/hand_bridge', 'env': {'HOSTNAME': '09179de40ef0', 'SHLVL': '0', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/ws', 'ROS_PYTHON_VERSION': '3', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'PWD': '/ws/ros2_ws/build/hand_bridge', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ws/ros2_ws/build/hand_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[0.306856] (-) TimerEvent: {}
+[0.363338] (hand_bridge) StdoutLine: {'line': b'running egg_info\n'}
+[0.364061] (hand_bridge) StdoutLine: {'line': b'creating ../../build/hand_bridge/hand_bridge.egg-info\n'}
+[0.364728] (hand_bridge) StdoutLine: {'line': b'writing ../../build/hand_bridge/hand_bridge.egg-info/PKG-INFO\n'}
+[0.366146] (hand_bridge) StdoutLine: {'line': b'writing dependency_links to ../../build/hand_bridge/hand_bridge.egg-info/dependency_links.txt\n'}
+[0.366760] (hand_bridge) StdoutLine: {'line': b'writing entry points to ../../build/hand_bridge/hand_bridge.egg-info/entry_points.txt\n'}
+[0.367244] (hand_bridge) StdoutLine: {'line': b'writing requirements to ../../build/hand_bridge/hand_bridge.egg-info/requires.txt\n'}
+[0.367587] (hand_bridge) StdoutLine: {'line': b'writing top-level names to ../../build/hand_bridge/hand_bridge.egg-info/top_level.txt\n'}
+[0.368086] (hand_bridge) StdoutLine: {'line': b"writing manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'\n"}
+[0.370004] (hand_bridge) StdoutLine: {'line': b"reading manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'\n"}
+[0.371078] (hand_bridge) StdoutLine: {'line': b"writing manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'\n"}
+[0.371381] (hand_bridge) StdoutLine: {'line': b'running build\n'}
+[0.371642] (hand_bridge) StdoutLine: {'line': b'running build_py\n'}
+[0.371963] (hand_bridge) StdoutLine: {'line': b'creating /ws/ros2_ws/build/hand_bridge/build\n'}
+[0.372293] (hand_bridge) StdoutLine: {'line': b'creating /ws/ros2_ws/build/hand_bridge/build/lib\n'}
+[0.372899] (hand_bridge) StdoutLine: {'line': b'creating /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge\n'}
+[0.373292] (hand_bridge) StdoutLine: {'line': b'copying hand_bridge/__init__.py -> /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge\n'}
+[0.373981] (hand_bridge) StdoutLine: {'line': b'copying hand_bridge/sim_driver_node.py -> /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge\n'}
+[0.374981] (hand_bridge) StdoutLine: {'line': b'running install\n'}
+[0.375542] (hand_bridge) StdoutLine: {'line': b'running install_lib\n'}
+[0.376267] (hand_bridge) StdoutLine: {'line': b'creating /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge\n'}
+[0.376618] (hand_bridge) StdoutLine: {'line': b'copying /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge/__init__.py -> /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge\n'}
+[0.377484] (hand_bridge) StdoutLine: {'line': b'copying /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge/sim_driver_node.py -> /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge\n'}
+[0.378728] (hand_bridge) StdoutLine: {'line': b'byte-compiling /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge/__init__.py to __init__.cpython-310.pyc\n'}
+[0.380091] (hand_bridge) StdoutLine: {'line': b'byte-compiling /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge/sim_driver_node.py to sim_driver_node.cpython-310.pyc\n'}
+[0.382124] (hand_bridge) StdoutLine: {'line': b'running install_data\n'}
+[0.382612] (hand_bridge) StdoutLine: {'line': b'creating /ws/ros2_ws/install/hand_bridge/share/ament_index\n'}
+[0.383072] (hand_bridge) StdoutLine: {'line': b'creating /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index\n'}
+[0.383457] (hand_bridge) StdoutLine: {'line': b'creating /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index/packages\n'}
+[0.384011] (hand_bridge) StdoutLine: {'line': b'copying resource/hand_bridge -> /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index/packages\n'}
+[0.384526] (hand_bridge) StdoutLine: {'line': b'copying package.xml -> /ws/ros2_ws/install/hand_bridge/share/hand_bridge\n'}
+[0.385815] (hand_bridge) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.387090] (hand_bridge) StdoutLine: {'line': b'Copying ../../build/hand_bridge/hand_bridge.egg-info to /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge-0.0.1-py3.10.egg-info\n'}
+[0.392973] (hand_bridge) StdoutLine: {'line': b'running install_scripts\n'}
+[0.406549] (hand_bridge) StdoutLine: {'line': b'Installing sim_driver_node script to /ws/ros2_ws/install/hand_bridge/lib/hand_bridge\n'}
+[0.407006] (-) TimerEvent: {}
+[0.407838] (hand_bridge) StdoutLine: {'line': b"writing list of installed files to '/ws/ros2_ws/build/hand_bridge/install.log'\n"}
+[0.424987] (hand_bridge) CommandEnded: {'returncode': 0}
+[0.439759] (hand_bridge) JobEnded: {'identifier': 'hand_bridge', 'rc': 0}
+[0.441266] (-) EventReactorShutdown: {}

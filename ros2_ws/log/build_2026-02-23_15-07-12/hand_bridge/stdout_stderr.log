@@ -1,0 +1,35 @@
+running egg_info
+creating ../../build/hand_bridge/hand_bridge.egg-info
+writing ../../build/hand_bridge/hand_bridge.egg-info/PKG-INFO
+writing dependency_links to ../../build/hand_bridge/hand_bridge.egg-info/dependency_links.txt
+writing entry points to ../../build/hand_bridge/hand_bridge.egg-info/entry_points.txt
+writing requirements to ../../build/hand_bridge/hand_bridge.egg-info/requires.txt
+writing top-level names to ../../build/hand_bridge/hand_bridge.egg-info/top_level.txt
+writing manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'
+reading manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'
+writing manifest file '../../build/hand_bridge/hand_bridge.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /ws/ros2_ws/build/hand_bridge/build
+creating /ws/ros2_ws/build/hand_bridge/build/lib
+creating /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge
+copying hand_bridge/__init__.py -> /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge
+copying hand_bridge/sim_driver_node.py -> /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge
+running install
+running install_lib
+creating /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge
+copying /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge/__init__.py -> /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge
+copying /ws/ros2_ws/build/hand_bridge/build/lib/hand_bridge/sim_driver_node.py -> /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge
+byte-compiling /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge/__init__.py to __init__.cpython-310.pyc
+byte-compiling /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge/sim_driver_node.py to sim_driver_node.cpython-310.pyc
+running install_data
+creating /ws/ros2_ws/install/hand_bridge/share/ament_index
+creating /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index
+creating /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index/packages
+copying resource/hand_bridge -> /ws/ros2_ws/install/hand_bridge/share/ament_index/resource_index/packages
+copying package.xml -> /ws/ros2_ws/install/hand_bridge/share/hand_bridge
+running install_egg_info
+Copying ../../build/hand_bridge/hand_bridge.egg-info to /ws/ros2_ws/install/hand_bridge/lib/python3.10/site-packages/hand_bridge-0.0.1-py3.10.egg-info
+running install_scripts
+Installing sim_driver_node script to /ws/ros2_ws/install/hand_bridge/lib/hand_bridge
+writing list of installed files to '/ws/ros2_ws/build/hand_bridge/install.log'

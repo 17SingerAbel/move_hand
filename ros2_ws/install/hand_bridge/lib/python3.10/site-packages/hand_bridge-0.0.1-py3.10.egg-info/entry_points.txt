@@ -1,0 +1,3 @@
+[console_scripts]
+sim_driver_node = hand_bridge.sim_driver_node:main
+
