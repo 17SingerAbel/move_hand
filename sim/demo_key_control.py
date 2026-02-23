@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Interactive key control: middle-finger pose and restore boot pose."""
+"""Interactive key control: middle-finger pose and restore home pose."""
 
 from __future__ import annotations
 
@@ -28,6 +28,7 @@ def setup_logging(level: str, log_file: str | None) -> logging.Logger:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Interactive key control demo")
     parser.add_argument("--urdf", required=True, help="Path to hand URDF")
+    parser.add_argument("--poses", default="config/poses.yaml", help="Path to poses YAML (expects optional 'home')")
     parser.add_argument(
         "--middle-ratio",
         type=float,
@@ -46,6 +47,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--cam-target-x", type=float, default=0.0)
     parser.add_argument("--cam-target-y", type=float, default=0.0)
     parser.add_argument("--cam-target-z", type=float, default=0.05)
+    parser.add_argument(
+        "--transition-time",
+        type=float,
+        default=0.4,
+        help="Seconds for smooth transition after key press",
+    )
+    parser.add_argument(
+        "--transition-steps",
+        type=int,
+        default=40,
+        help="Number of interpolation steps for each transition",
+    )
     parser.add_argument(
         "--log-level",
         default="INFO",
@@ -75,6 +88,45 @@ def is_key_triggered(events: dict[int, int], key_code: int, key_triggered_flag: 
     return key_code in events and bool(events[key_code] & key_triggered_flag)
 
 
+def load_home_pose(path: Path) -> list[float] | None:
+    try:
+        import yaml
+    except ImportError as exc:
+        raise RuntimeError("Missing dependency: pyyaml. Run: pip install -r requirements.txt") from exc
+
+    if not path.exists():
+        return None
+    with path.open("r", encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    if not isinstance(data, dict) or "home" not in data:
+        return None
+    home = data["home"]
+    if not isinstance(home, list):
+        raise ValueError("Pose 'home' must be a list")
+    return [float(v) for v in home]
+
+
+def smooth_move(
+    ctrl: JointController,
+    target: list[float],
+    duration_s: float,
+    steps: int,
+) -> None:
+    start = ctrl.get_joint_positions()
+    n = min(len(start), len(target))
+    if n == 0:
+        return
+    steps = max(1, int(steps))
+    dt = max(0.0, float(duration_s)) / steps
+    for i in range(1, steps + 1):
+        alpha = i / steps
+        waypoint = [start[j] + alpha * (target[j] - start[j]) for j in range(n)]
+        ctrl.set_all_joints(waypoint)
+        ctrl.step()
+        if dt > 0:
+            time.sleep(dt)
+
+
 def main() -> int:
     args = parse_args()
     logger = setup_logging(args.log_level, args.log_file)
@@ -93,8 +145,21 @@ def main() -> int:
 
         boot_pose = ctrl.get_joint_positions()
         middle_pose = build_middle_finger_pose(ctrl, args.middle_ratio, args.others_ratio)
-        logger.info("Interactive control ready: M=middle-finger pose, O=restore boot pose, Q=quit")
-        logger.info("Captured boot pose with %d joints", len(boot_pose))
+        home_pose = load_home_pose(Path(args.poses))
+        if home_pose is None:
+            restore_pose = boot_pose
+            restore_pose_name = "boot pose (fallback)"
+            logger.warning("No valid 'home' pose found in %s, fallback to boot pose", args.poses)
+        else:
+            if len(home_pose) != len(ctrl.joints):
+                raise ValueError(
+                    f"Pose 'home' length mismatch: expected {len(ctrl.joints)} got {len(home_pose)}"
+                )
+            restore_pose = home_pose
+            restore_pose_name = "home pose (from poses.yaml)"
+
+        logger.info("Interactive control ready: M=middle-finger pose, O=restore home pose, Q=quit")
+        logger.info("Restore target: %s", restore_pose_name)
 
         while True:
             events = ctrl.p.getKeyboardEvents()
@@ -102,15 +167,25 @@ def main() -> int:
                 is_key_triggered(events, ord("m"), ctrl.p.KEY_WAS_TRIGGERED)
                 or is_key_triggered(events, ord("M"), ctrl.p.KEY_WAS_TRIGGERED)
             ):
-                ctrl.set_all_joints(middle_pose)
-                logger.info("Applied middle-finger pose")
+                smooth_move(
+                    ctrl,
+                    middle_pose,
+                    duration_s=args.transition_time,
+                    steps=args.transition_steps,
+                )
+                logger.info("Applied middle-finger pose (smooth)")
 
             if (
                 is_key_triggered(events, ord("o"), ctrl.p.KEY_WAS_TRIGGERED)
                 or is_key_triggered(events, ord("O"), ctrl.p.KEY_WAS_TRIGGERED)
             ):
-                ctrl.set_all_joints(boot_pose)
-                logger.info("Restored boot pose")
+                smooth_move(
+                    ctrl,
+                    restore_pose,
+                    duration_s=args.transition_time,
+                    steps=args.transition_steps,
+                )
+                logger.info("Restored %s (smooth)", restore_pose_name)
 
             if (
                 is_key_triggered(events, ord("q"), ctrl.p.KEY_WAS_TRIGGERED)

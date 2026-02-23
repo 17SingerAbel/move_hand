@@ -155,8 +155,8 @@ conda run -n linkhand python sim/demo_all_joints.py \
 ```
 
 说明：
-- `config/poses.yaml` 目前是占位空列表，脚本会自动生成默认姿态（open/half_close/close）。
-- 你后续可以把每个姿态改成“按关节的实际向量”，长度必须等于可动关节数。
+- `config/poses.yaml` 已提供 `home/open/half_close/close` 四组示例姿态。
+- 你可以按关节实际范围调整各姿态，长度必须等于可动关节数。
 
 ## 9) 中指手势 demo（客户指定）
 需求：中指保持伸直，其他手指最大弯曲。
@@ -187,14 +187,67 @@ python sim/demo_middle_finger.py \
 ```bash
 python sim/demo_key_control.py \
   --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --poses config/poses.yaml \
+  --transition-time 0.4 \
+  --transition-steps 40 \
   --log-level INFO \
   --log-file logs/demo_key_control.log
 ```
 
 键位：
 - `M`：中指手势（中指伸直，其他手指弯曲）
-- `O`：恢复到脚本启动时捕获的“开机初始姿态”
+- `O`：恢复到 `config/poses.yaml` 里的 `home` 姿态（若缺失则回退到启动姿态）
 - `Q`：退出脚本
 
 说明：
 - 该脚本需要 GUI（用于键盘事件），不适用于 `--headless`。
+- `--transition-time` 和 `--transition-steps` 用于控制按键动作的平滑过渡速度。
+- `--poses` 用于指定包含 `home` 姿态的配置文件。
+
+## 11) 自动回归测试（M -> O 循环 100 次）
+运行：
+```bash
+python sim/test_middle_home_cycle.py \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --poses config/poses.yaml \
+  --cycles 100 \
+  --transition-steps 40 \
+  --sim-steps-per-waypoint 6 \
+  --settle-steps 30
+```
+
+输出判定：
+- `PASS test_middle_home_cycle ...`：通过
+- `FAIL test_middle_home_cycle ...`：未通过（会包含 clipping 统计和最终误差）
+
+## 12) 最小 CLI 控制入口
+应用中指姿态：
+```bash
+python tools/cli_control.py \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --poses config/poses.yaml \
+  pose middle
+```
+
+恢复 home 姿态：
+```bash
+python tools/cli_control.py \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --poses config/poses.yaml \
+  pose home
+```
+
+说明：
+- `pose middle` 由关节名自动生成中指手势（`--middle-ratio` / `--others-ratio` 可调）。
+- `pose home/open/half_close/close` 从 `config/poses.yaml` 读取。
+- 支持 `--headless`，适合脚本化调用。
+
+## 13) 最小 ROS2 适配骨架
+已提供最小 ROS2 包：`ros2_ws/src/hand_bridge`
+
+核心节点：
+- `sim_driver_node` 订阅 `/hand/command`（`std_msgs/msg/Float64MultiArray`）
+- `sim_driver_node` 发布 `/hand/state`（`sensor_msgs/msg/JointState`）
+
+快速使用说明见：
+- `ros2_ws/README.md`
