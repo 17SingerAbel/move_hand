@@ -24,6 +24,12 @@
   - `position`: 当前关节角（rad）
 - Publish rate: `publish_rate_hz` 参数控制（默认 50Hz）
 
+### 3) `/hand/health`
+- Type: `std_msgs/msg/String`
+- Semantics: 运行健康与输入质量统计
+- Example payload:
+  - `ok=1 joints=11 valid_commands=12 bad_length=1 bad_value=0 apply_errors=0 last_valid_cmd_age_sec=0.032`
+
 ## Parameters (`sim_driver_node`)
 - `urdf` (string): URDF 路径
 - `headless` (bool): 是否无 GUI
@@ -32,7 +38,9 @@
 - `max_force` (float): 位置控制力矩上限
 
 ## Error Handling (current)
-- command 长度错误：忽略该消息并 warning。
+- command 长度错误：忽略该消息、warning、`bad_length` 计数 +1。
+- command 包含 `NaN/Inf`：忽略该消息、warning、`bad_value` 计数 +1。
+- 控制应用异常：记录 `apply_errors` 计数并继续运行。
 - 节点持续运行，后续合法命令可恢复控制。
 
 ## Not Included in v1

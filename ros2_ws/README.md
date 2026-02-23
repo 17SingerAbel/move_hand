@@ -7,6 +7,7 @@
 - 节点：`sim_driver_node`
 - 输入 topic：`/hand/command` (`std_msgs/msg/Float64MultiArray`)
 - 输出 topic：`/hand/state` (`sensor_msgs/msg/JointState`)
+- 健康 topic：`/hand/health` (`std_msgs/msg/String`)
 
 接口细节见：`../docs/ros2_interface.md`
 
@@ -43,6 +44,18 @@ ros2 topic echo /hand/state
 ```
 
 ## B) Docker（仅联调测试）
+
+### 一键测试（推荐）
+```bash
+bash ros2_ws/scripts/docker_smoke_test.sh
+```
+
+该脚本会自动完成：
+- Docker build
+- `colcon build`
+- 启动 `sim_driver_node`
+- 发布合法/非法 command
+- 校验 `/hand/state` 与 `/hand/health`
 
 ### 1) 构建镜像
 ```bash

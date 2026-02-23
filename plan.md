@@ -6,8 +6,23 @@
 - Phase 2: 已完成（`sim/demo_single_joint.py` 可复现单关节闭环）。
 - Phase 3: 已完成（`sim/demo_all_joints.py` + `config/poses.yaml` + 回归验证）。
 - Phase 4: 已完成（`sim/demo_key_control.py`、`tools/cli_control.py`、`sim/test_middle_home_cycle.py`）。
-- Phase 5: 进行中（`ros2_ws/src/hand_bridge` 最小骨架已可在 Docker 中 build/run/topic 验证）。
+- Phase 5: 进行中（已完成接口收口：输入校验、`/hand/health`、Docker 一键 smoke test；待 Windows 原生 ROS2 联合验证）。
 - Phase 6: 未开始（目标为 Windows 真机驱动替换与现场联调）。
+
+## 下一步执行清单（按优先级）
+### P0（先做）
+1. 固化 ROS2 接口契约（v1）并在代码里强制校验：已完成。
+2. 增加健康状态输出（`/hand/health`）：已完成。
+3. 把 Phase 5 验证脚本化：已完成（`ros2_ws/scripts/docker_smoke_test.sh`）。
+
+### P1（随后）
+1. Windows 原生 ROS2 跑通 `sim_driver_node`（不依赖 Docker）。
+2. 准备 `real_driver_node` 骨架（接口保持与 `sim_driver_node` 一致）。
+3. 完成 sim/real 关节顺序映射表并落文档。
+
+### P2（真机前）
+1. 做 30 分钟稳定性压测（命令频率、状态频率、丢包/延迟统计）。
+2. 故障恢复流程演练（驱动重启、通信中断恢复）。
 
 ## 总体原则
 - 当前目标不是复杂操作，而是“逐关节可控”。
@@ -125,13 +140,13 @@
 - 测试 3：故障演练（断开通信后恢复）可在 2 分钟内重新可控。
 
 ## 每阶段交付物清单
-- Phase 0: `docs/interface.md`
+- Phase 0: `docs/ros2_interface.md`（接口约定）+ `docs/architecture.md`（结构与数据流）
 - Phase 1: `sim/sim_load.py`
 - Phase 2: `sim/joint_controller.py`, `sim/demo_single_joint.py`
 - Phase 3: `sim/demo_all_joints.py`, `config/poses.yaml`
-- Phase 4: `tools/cli_control.py` 或 `web_control/`
+- Phase 4: `sim/demo_key_control.py`, `tools/cli_control.py`, `sim/test_middle_home_cycle.py`
 - Phase 5: `ros2_ws/src/hand_bridge/`（sim driver + msg/topic 约定）
-- Phase 6: `docs/windows_deploy.md`, `docs/site_test_checklist.md`
+- Phase 6: `docs/windows_runbook.md`（已准备）+ `docs/site_test_checklist.md`（待补）
 
 ## 最小里程碑（建议先冲这个）
 - M1（2 天内）：Phase 0-3 完成，逐关节控制在 PyBullet 跑通。

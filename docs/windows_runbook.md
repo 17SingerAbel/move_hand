@@ -54,9 +54,42 @@ python tools\cli_control.py --urdf external\linkerhand-urdf\o6\right\linkerhand_
 当前仓库已提供最小桥接骨架 `ros2_ws/src/hand_bridge`：
 - 订阅 `/hand/command` (`std_msgs/msg/Float64MultiArray`)
 - 发布 `/hand/state` (`sensor_msgs/msg/JointState`)
+- 健康 `/hand/health` (`std_msgs/msg/String`)
 
 建议先固定接口约定，再替换底层驱动为真机 SDK。
 
-## 8) 约束（必须遵守）
+## 8) Windows 联合验证（多人协作）
+推荐两人分工：
+- `Operator A`：负责启动节点与观察日志。
+- `Operator B`：负责发送命令并观察 topic 输出。
+
+### 步骤
+1. `Operator A` 启动节点（Windows 原生 ROS2）：
+```powershell
+cd ros2_ws
+colcon build --packages-select hand_bridge
+call install\\setup.bat
+ros2 run hand_bridge sim_driver_node --ros-args -p urdf:=C:/work/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf -p headless:=true
+```
+2. `Operator B` 发送合法命令：
+```powershell
+ros2 topic pub --once /hand/command std_msgs/msg/Float64MultiArray "{data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}"
+```
+3. `Operator B` 发送非法命令（长度错误）：
+```powershell
+ros2 topic pub --once /hand/command std_msgs/msg/Float64MultiArray "{data: [0.0, 0.0]}"
+```
+4. `Operator B` 检查状态与健康：
+```powershell
+ros2 topic echo --once /hand/state
+ros2 topic echo --once /hand/health
+```
+
+### 通过标准
+- `/hand/state` 有 11 个关节名和位置数据。
+- `/hand/health` 里 `bad_length` 至少为 1（说明非法命令被识别并统计）。
+- 节点不中断，可继续接收后续合法命令。
+
+## 9) 约束（必须遵守）
 - 最终客户运行：Windows 原生。
 - Docker：仅用于开发机上 ROS2 联调测试。

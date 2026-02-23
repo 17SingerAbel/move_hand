@@ -102,10 +102,16 @@ python sim/test_middle_home_cycle.py \
 - 节点：`sim_driver_node`
 - 订阅：`/hand/command` (`std_msgs/msg/Float64MultiArray`)
 - 发布：`/hand/state` (`sensor_msgs/msg/JointState`)
+- 健康：`/hand/health` (`std_msgs/msg/String`)
 
 详细见：
 - `ros2_ws/README.md`
 - `docs/ros2_interface.md`
+
+一键 ROS2 联调测试（Docker）：
+```bash
+bash ros2_ws/scripts/docker_smoke_test.sh
+```
 
 ## 平台说明
 - Windows 最终运行：`docs/windows_runbook.md`
