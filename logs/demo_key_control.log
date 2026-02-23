@@ -1,0 +1,5 @@
+2026-02-23 09:37:57,171 | INFO | joint_controller | JointController ready: gui=True hand_id=1 movable_joints=11
+2026-02-23 09:37:57,172 | INFO | demo_key_control | Interactive control ready: M=middle-finger pose, O=restore boot pose, Q=quit
+2026-02-23 09:37:57,172 | INFO | demo_key_control | Captured boot pose with 11 joints
+2026-02-23 09:37:59,782 | INFO | demo_key_control | Applied middle-finger pose
+2026-02-23 09:38:02,679 | INFO | demo_key_control | Restored boot pose

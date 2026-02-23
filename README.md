@@ -181,3 +181,20 @@ python sim/demo_middle_finger.py \
   --middle-ratio 0.1 \
   --others-ratio 1.0
 ```
+
+## 10) 双按键交互控制（中指/复原）
+运行：
+```bash
+python sim/demo_key_control.py \
+  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --log-level INFO \
+  --log-file logs/demo_key_control.log
+```
+
+键位：
+- `M`：中指手势（中指伸直，其他手指弯曲）
+- `O`：恢复到脚本启动时捕获的“开机初始姿态”
+- `Q`：退出脚本
+
+说明：
+- 该脚本需要 GUI（用于键盘事件），不适用于 `--headless`。
