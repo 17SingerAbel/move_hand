@@ -4,7 +4,7 @@ Linker Hand 06 Lite 在 macOS 上的最小仿真控制 demo（PyBullet）。
 
 ## 1) 创建 conda 环境
 ```bash
-cd /Users/abelsang/yaki-robotics/move_hand
+cd move_hand
 conda create -n linkhand python=3.10 -y
 conda activate linkhand
 pip install -r requirements.txt
@@ -36,20 +36,20 @@ find external/linkerhand-urdf -name "*.urdf"
 ```
 
 ## 3) 加载模型并打印可动关节
-把下面命令里的 `<URDF绝对路径>` 换成你上一步 `find` 找到的某个文件：
+把下面命令里的 `<URDF相对路径>` 换成你上一步 `find` 找到的某个文件：
 
 ```bash
-python sim/sim_load.py --urdf <URDF绝对路径>
+python sim/sim_load.py --urdf <URDF相对路径>
 ```
 
 示例（仅示意，实际以你的 `find` 结果为准）：
 ```bash
-python sim/sim_load.py --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/xxx.urdf
+python sim/sim_load.py --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf
 ```
 
 ## 4) 单关节控制 demo
 ```bash
-python sim/demo_single_joint.py --urdf <URDF绝对路径> --joint 0 --cycles 10
+python sim/demo_single_joint.py --urdf <URDF相对路径> --joint 0 --cycles 10
 ```
 
 ## 5) 常用说明
@@ -62,7 +62,7 @@ python sim/demo_single_joint.py --urdf <URDF绝对路径> --joint 0 --cycles 10
 脚本默认已经拉近镜头；如果你还觉得远，可以手动调：
 
 ```bash
-python sim/sim_load.py --urdf <URDF绝对路径> --cam-distance 0.2 --cam-yaw 140 --cam-pitch -15 --cam-target-z 0.08
+python sim/sim_load.py --urdf <URDF相对路径> --cam-distance 0.2 --cam-yaw 140 --cam-pitch -15 --cam-target-z 0.08
 ```
 
 `demo_single_joint.py` 也支持同样的相机参数。
@@ -74,14 +74,14 @@ python sim/sim_load.py --urdf <URDF绝对路径> --cam-distance 0.2 --cam-yaw 14
 
 示例：
 ```bash
-python sim/sim_load.py --urdf <URDF绝对路径> --log-level DEBUG --log-file logs/sim_load.log
-python sim/demo_single_joint.py --urdf <URDF绝对路径> --joint 0 --cycles 10 --log-level DEBUG --log-file logs/demo_joint.log
+python sim/sim_load.py --urdf <URDF相对路径> --log-level DEBUG --log-file logs/sim_load.log
+python sim/demo_single_joint.py --urdf <URDF相对路径> --joint 0 --cycles 10 --log-level DEBUG --log-file logs/demo_joint.log
 ```
 
 如果你在多 Python 环境下，建议直接用：
 ```bash
-conda run -n linkhand python sim/sim_load.py --urdf <URDF绝对路径> --log-level DEBUG --log-file logs/sim_load.log
-conda run -n linkhand python sim/demo_single_joint.py --urdf <URDF绝对路径> --joint 0 --cycles 10 --log-level DEBUG --log-file logs/demo_joint.log
+conda run -n linkhand python sim/sim_load.py --urdf <URDF相对路径> --log-level DEBUG --log-file logs/sim_load.log
+conda run -n linkhand python sim/demo_single_joint.py --urdf <URDF相对路径> --joint 0 --cycles 10 --log-level DEBUG --log-file logs/demo_joint.log
 ```
 
 建议你判断“运行正常”看这几个信号：
@@ -101,7 +101,7 @@ pip install -r requirements.txt
 运行整手姿态序列 demo：
 ```bash
 python sim/demo_all_joints.py \
-  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
   --poses config/poses.yaml \
   --sequence open,half_close,close,half_close,open \
   --cycles 2 \
@@ -129,13 +129,13 @@ python sim/demo_all_joints.py \
 最小可用命令（只保留必要参数）：
 ```bash
 python sim/demo_all_joints.py \
-  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf
 ```
 
 常用调试命令（含详细日志）：
 ```bash
 python sim/demo_all_joints.py \
-  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
   --poses config/poses.yaml \
   --sequence open,half_close,close,half_close,open \
   --cycles 2 \
@@ -146,7 +146,7 @@ python sim/demo_all_joints.py \
 多环境下推荐强制指定：
 ```bash
 conda run -n linkhand python sim/demo_all_joints.py \
-  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
   --poses config/poses.yaml \
   --sequence open,half_close,close,half_close,open \
   --cycles 2 \
@@ -164,7 +164,7 @@ conda run -n linkhand python sim/demo_all_joints.py \
 运行：
 ```bash
 python sim/demo_middle_finger.py \
-  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
   --hold 3 \
   --log-level DEBUG \
   --log-file logs/demo_middle_finger.log
@@ -177,7 +177,7 @@ python sim/demo_middle_finger.py \
 可微调示例（中指稍微弯一点）：
 ```bash
 python sim/demo_middle_finger.py \
-  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
   --middle-ratio 0.1 \
   --others-ratio 1.0
 ```
@@ -186,7 +186,7 @@ python sim/demo_middle_finger.py \
 运行：
 ```bash
 python sim/demo_key_control.py \
-  --urdf /Users/abelsang/yaki-robotics/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  --urdf external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
   --log-level INFO \
   --log-file logs/demo_key_control.log
 ```
