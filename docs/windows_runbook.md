@@ -4,7 +4,7 @@
 
 ## 1) 获取代码
 ```powershell
-cd C:\work
+cd <your-parent-dir>
 git clone <your-repo-url> move_hand
 cd move_hand
 ```
@@ -69,7 +69,7 @@ python tools\cli_control.py --urdf external\linkerhand-urdf\o6\right\linkerhand_
 cd ros2_ws
 colcon build --packages-select hand_bridge
 call install\\setup.bat
-ros2 run hand_bridge sim_driver_node --ros-args -p urdf:=C:/work/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf -p headless:=true
+ros2 run hand_bridge sim_driver_node --ros-args -p urdf:=../external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf -p headless:=true
 ```
 2. `Operator B` 发送合法命令：
 ```powershell

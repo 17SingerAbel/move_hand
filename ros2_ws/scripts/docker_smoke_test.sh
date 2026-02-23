@@ -22,7 +22,7 @@ echo "[2/3] Running ROS2 smoke test in container..."
   set -u
 
   ros2 run hand_bridge sim_driver_node --ros-args \
-    -p urdf:=/ws/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+    -p urdf:=../external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
     -p headless:=true \
     -p publish_rate_hz:=20.0 > /tmp/sim_driver.log 2>&1 &
   NODE_PID=\$!

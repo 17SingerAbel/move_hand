@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import math
 from pathlib import Path
 import sys
 from typing import Optional
@@ -11,6 +12,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Float64MultiArray
+from std_msgs.msg import String
 
 
 def _find_repo_root() -> Path:
@@ -58,6 +60,11 @@ class SimDriverNode(Node):
         self._ctrl = JointController(urdf_path=urdf_param, gui=not self._headless)
         self._joint_names = [j.name for j in self._ctrl.joints]
         self._target: Optional[list[float]] = None
+        self._bad_length_count = 0
+        self._bad_value_count = 0
+        self._apply_error_count = 0
+        self._valid_command_count = 0
+        self._last_valid_command_time = self.get_clock().now()
 
         self._sub = self.create_subscription(
             Float64MultiArray,
@@ -66,6 +73,7 @@ class SimDriverNode(Node):
             10,
         )
         self._pub = self.create_publisher(JointState, "/hand/state", 10)
+        self._health_pub = self.create_publisher(String, "/hand/health", 10)
 
         period_s = 1.0 / max(1e-3, self._publish_rate_hz)
         self._timer = self.create_timer(period_s, self._on_timer)
@@ -76,17 +84,28 @@ class SimDriverNode(Node):
 
     def _on_command(self, msg: Float64MultiArray) -> None:
         if len(msg.data) != len(self._joint_names):
+            self._bad_length_count += 1
             self.get_logger().warning(
                 f"Command length mismatch: expected {len(self._joint_names)} got {len(msg.data)}"
             )
             return
-        self._target = [float(v) for v in msg.data]
+
+        parsed = [float(v) for v in msg.data]
+        if any(not math.isfinite(v) for v in parsed):
+            self._bad_value_count += 1
+            self.get_logger().warning("Command contains NaN/Inf, ignored")
+            return
+
+        self._target = parsed
+        self._valid_command_count += 1
+        self._last_valid_command_time = self.get_clock().now()
 
     def _on_timer(self) -> None:
         if self._target is not None:
             try:
                 self._ctrl.set_all_joints(self._target, max_force=self._max_force)
             except Exception as exc:
+                self._apply_error_count += 1
                 self.get_logger().error(f"Failed to apply command: {str(exc)}")
 
         self._ctrl.step(steps=max(1, self._sim_steps_per_cycle))
@@ -97,6 +116,18 @@ class SimDriverNode(Node):
         state.name = self._joint_names
         state.position = positions
         self._pub.publish(state)
+
+        age = (self.get_clock().now() - self._last_valid_command_time).nanoseconds / 1e9
+        health = String()
+        health.data = (
+            f"ok=1 joints={len(self._joint_names)} "
+            f"valid_commands={self._valid_command_count} "
+            f"bad_length={self._bad_length_count} "
+            f"bad_value={self._bad_value_count} "
+            f"apply_errors={self._apply_error_count} "
+            f"last_valid_cmd_age_sec={age:.3f}"
+        )
+        self._health_pub.publish(health)
 
     def destroy_node(self) -> bool:
         try:

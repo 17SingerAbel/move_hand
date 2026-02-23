@@ -22,12 +22,12 @@ source install/setup.bash
 ```
 
 ### 2) 启动节点
-注意：`urdf` 参数建议给绝对路径，避免 cwd 差异导致找不到文件。
+注意：下面示例默认你当前目录是 `ros2_ws`，因此 `urdf` 用相对路径 `../external/...`。
 
 ```bash
 ros2 run hand_bridge sim_driver_node \
   --ros-args \
-  -p urdf:=/ABS/PATH/TO/move_hand/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+  -p urdf:=../external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
   -p headless:=true \
   -p publish_rate_hz:=50.0
 ```
@@ -80,7 +80,7 @@ docker compose run --rm ros2-test bash -lc "
   source install/setup.bash && \
   ros2 run hand_bridge sim_driver_node \
     --ros-args \
-    -p urdf:=/ws/external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
+    -p urdf:=../external/linkerhand-urdf/o6/right/linkerhand_o6_right.urdf \
     -p headless:=true
 "
 ```
